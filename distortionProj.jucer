@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<JUCERPROJECT id="bcw2Uj" name="distortionPlugInV2" projectType="audioplug"
+              useAppConfig="0" addUsingNamespaceToJuceHeader="1" displaySplashScreen="1"
+              jucerFormatVersion="1" cppLanguageStandard="17" headerPath="/usr/local/Cellar/opencv/4.6.0/include/opencv4&#10;/usr/local/include"
+              pluginFormats="buildStandalone,buildVST3" version="2.0">
+  <MAINGROUP id="Bj19u2" name="distortionPlugInV2">
+    <GROUP id="{B1B8DF92-13F2-F555-0D53-EA2F728CFE65}" name="Source">
+      <FILE id="nUy8K6" name="KnobComponent.h" compile="0" resource="0" file="Source/KnobComponent.h"/>
+      <GROUP id="{ACF1510D-7160-8DC9-CDF0-8AB9DAC1F718}" name="DistortionBands">
+        <FILE id="ijgp9g" name="DistortionBand.h" compile="0" resource="0"
+              file="Source/DistortionBand.h"/>
+        <FILE id="mhcwrU" name="DistortionBandControls.h" compile="0" resource="0"
+              file="Source/DistortionBandControls.h"/>
+      </GROUP>
+      <GROUP id="{B6F259A3-AA13-3C0F-6DB4-3FD466D97361}" name="Meters">
+        <FILE id="yYTzFC" name="GainMeter.h" compile="0" resource="0" file="Source/GainMeter.h"/>
+      </GROUP>
+      <GROUP id="{3BC8A4CC-DB06-BE8C-02CE-4C3FA26E78EB}" name="ImageUploader">
+        <FILE id="eFfeWt" name="ImageUploaderManager.cpp" compile="1" resource="0"
+              file="Source/ImageUploaderManager.cpp"/>
+        <FILE id="kXb4Ts" name="ImageUploaderManager.h" compile="0" resource="0"
+              file="Source/ImageUploaderManager.h"/>
+        <FILE id="dckKpZ" name="ImageUploadPanel.h" compile="0" resource="0"
+              file="Source/ImageUploadPanel.h"/>
+      </GROUP>
+      <GROUP id="{F02FBF3E-BA9B-70DC-DD76-8F9FC4B1B9F0}" name="Preset">
+        <FILE id="Sfk0uV" name="PresetManager.cpp" compile="1" resource="0"
+              file="Source/PresetManager.cpp"/>
+        <FILE id="kEPR9Q" name="PresetManager.h" compile="0" resource="0" file="Source/PresetManager.h"/>
+        <FILE id="MlaxPD" name="PresetPanel.h" compile="0" resource="0" file="Source/PresetPanel.h"/>
+      </GROUP>
+      <GROUP id="{21708B58-FB6C-0E86-DAC5-7ED324F161CC}" name="SpectrumAnalyser">
+        <FILE id="yg9jod" name="ResponseCurve.cpp" compile="1" resource="0"
+              file="Source/ResponseCurve.cpp"/>
+        <FILE id="y852mH" name="ResponseCurve.h" compile="0" resource="0" file="Source/ResponseCurve.h"/>
+        <FILE id="y6i9bw" name="SingleChannelSampleFifo.h" compile="0" resource="0"
+              file="Source/SingleChannelSampleFifo.h"/>
+        <FILE id="TFtDxT" name="Fifo.h" compile="0" resource="0" file="Source/Fifo.h"/>
+        <FILE id="xhLnzN" name="PathProducer.h" compile="0" resource="0" file="Source/PathProducer.h"/>
+        <FILE id="a0FVx7" name="SpectrumPathGenerator.h" compile="0" resource="0"
+              file="Source/SpectrumPathGenerator.h"/>
+        <FILE id="bXCWn0" name="FFTDataGenerator.h" compile="0" resource="0"
+              file="Source/FFTDataGenerator.h"/>
+      </GROUP>
+      <FILE id="hvjJQn" name="NeuralNetwork.cpp" compile="1" resource="0"
+            file="Source/NeuralNetwork.cpp"/>
+      <FILE id="HYdJwv" name="NeuralNetwork.h" compile="0" resource="0" file="Source/NeuralNetwork.h"/>
+      <FILE id="ZfBNsW" name="ImageAnalyser.cpp" compile="1" resource="0"
+            file="Source/ImageAnalyser.cpp"/>
+      <FILE id="pDNpO7" name="ImageAnalyser.h" compile="0" resource="0" file="Source/ImageAnalyser.h"/>
+      <FILE id="wPbMSX" name="PluginProcessor.cpp" compile="1" resource="0"
+            file="Source/PluginProcessor.cpp"/>
+      <FILE id="YF6F8n" name="PluginProcessor.h" compile="0" resource="0"
+            file="Source/PluginProcessor.h"/>
+      <FILE id="ky69Ld" name="PluginEditor.cpp" compile="1" resource="0"
+            file="Source/PluginEditor.cpp"/>
+      <FILE id="i6SD2G" name="PluginEditor.h" compile="0" resource="0" file="Source/PluginEditor.h"/>
+    </GROUP>
+    <GROUP id="{F4D8FDF2-C35B-998D-97E6-5473B9260CF5}" name="images">
+      <FILE id="jP0AaZ" name="button_middle_on.png" compile="0" resource="1"
+            file="images/button_middle_on.png"/>
+      <FILE id="epYzEL" name="led_off.png" compile="0" resource="1" file="images/led_off.png"/>
+      <FILE id="sHH2k2" name="led_on.png" compile="0" resource="1" file="images/led_on.png"/>
+      <FILE id="uzaWRu" name="button_middle_off.png" compile="0" resource="1"
+            file="images/button_middle_off.png"/>
+      <FILE id="bj4lE0" name="highCutNewWhite.png" compile="0" resource="1"
+            file="images/highCutNewWhite.png"/>
+      <FILE id="US8wBv" name="imageUpload.png" compile="0" resource="1" file="images/imageUpload.png"/>
+      <FILE id="C0KTHG" name="Knob_01.png" compile="0" resource="1" file="images/Knob_01.png"/>
+      <FILE id="klvdwQ" name="Knob_03.png" compile="0" resource="1" file="images/Knob_03.png"/>
+      <FILE id="yFiOTn" name="Knob_04.png" compile="0" resource="1" file="images/Knob_04.png"/>
+      <FILE id="Cvno7U" name="lowCutNewWhite.png" compile="0" resource="1"
+            file="images/lowCutNewWhite.png"/>
+      <FILE id="CLpRzt" name="switchOffBlue.png" compile="0" resource="1"
+            file="images/switchOffBlue.png"/>
+      <FILE id="v37ygO" name="switchOnBlue.png" compile="0" resource="1"
+            file="images/switchOnBlue.png"/>
+      <FILE id="DLX5WX" name="toggleButtonOnDBlue.png" compile="0" resource="1"
+            file="images/toggleButtonOnDBlue.png"/>
+      <FILE id="y95TVp" name="toggleButtonOnDGreen.png" compile="0" resource="1"
+            file="images/toggleButtonOnDGreen.png"/>
+      <FILE id="WILGUC" name="toggleButtonPurple.png" compile="0" resource="1"
+            file="images/toggleButtonPurple.png"/>
+    </GROUP>
+  </MAINGROUP>
+  <JUCEOPTIONS JUCE_STRICT_REFCOUNTEDPOINTER="1" JUCE_VST3_CAN_REPLACE_VST2="0"/>
+  <EXPORTFORMATS>
+    <XCODE_MAC targetFolder="Builds/MacOSX" extraLinkerFlags="-I/usr/local/opt/opencv/include/opencv4&#10;-L/usr/local/opt/opencv/lib&#10;-lopencv_gapi&#10;-lopencv_stitching&#10;-lopencv_alphamat&#10;-lopencv_aruco&#10;-lopencv_barcode&#10;-lopencv_bgsegm&#10;-lopencv_bioinspired&#10;-lopencv_ccalib&#10;-lopencv_dnn_objdetect&#10;-lopencv_dnn_superres&#10;-lopencv_dpm&#10;-lopencv_face&#10;-lopencv_freetype&#10;-lopencv_fuzzy&#10;-lopencv_hfs&#10;-lopencv_img_hash&#10;-lopencv_intensity_transform&#10;-lopencv_line_descriptor&#10;-lopencv_mcc&#10;-lopencv_quality&#10;-lopencv_rapid&#10;-lopencv_reg&#10;-lopencv_rgbd&#10;-lopencv_saliency&#10;-lopencv_sfm&#10;-lopencv_stereo&#10;-lopencv_structured_light&#10;-lopencv_phase_unwrapping&#10;-lopencv_superres&#10;-lopencv_optflow&#10;-lopencv_surface_matching&#10;-lopencv_tracking&#10;-lopencv_highgui&#10;-lopencv_datasets&#10;-lopencv_text&#10;-lopencv_plot&#10;-lopencv_videostab&#10;-lopencv_videoio&#10;-lopencv_viz&#10;-lopencv_wechat_qrcode&#10;-lopencv_xfeatures2d&#10;-lopencv_shape&#10;-lopencv_ml&#10;-lopencv_ximgproc&#10;-lopencv_video&#10;-lopencv_xobjdetect&#10;-lopencv_objdetect&#10;-lopencv_calib3d&#10;-lopencv_imgcodecs&#10;-lopencv_features2d&#10;-lopencv_dnn&#10;-lopencv_flann&#10;-lopencv_xphoto&#10;-lopencv_photo&#10;-lopencv_imgproc&#10;-lopencv_core">
+      <CONFIGURATIONS>
+        <CONFIGURATION isDebug="1" name="Debug" targetName="distortionProj" defines="JUCE_MODAL_LOOPS_PERMITTED=1"
+                       macOSDeploymentTarget="12.0" osxCompatibility="12.0 SDK"/>
+        <CONFIGURATION isDebug="0" name="Release" targetName="distortionProj" macOSDeploymentTarget="12.0"
+                       osxCompatibility="12.0 SDK"/>
+      </CONFIGURATIONS>
+      <MODULEPATHS>
+        <MODULEPATH id="juce_audio_basics" path="../../JUCE/modules"/>
+        <MODULEPATH id="juce_audio_devices" path="../../JUCE/modules"/>
+        <MODULEPATH id="juce_audio_formats" path="../../JUCE/modules"/>
+        <MODULEPATH id="juce_audio_plugin_client" path="../../JUCE/modules"/>
+        <MODULEPATH id="juce_audio_processors" path="../../JUCE/modules"/>
+        <MODULEPATH id="juce_audio_utils" path="../../JUCE/modules"/>
+        <MODULEPATH id="juce_core" path="../../JUCE/modules"/>
+        <MODULEPATH id="juce_data_structures" path="../../JUCE/modules"/>
+        <MODULEPATH id="juce_events" path="../../JUCE/modules"/>
+        <MODULEPATH id="juce_graphics" path="../../JUCE/modules"/>
+        <MODULEPATH id="juce_gui_basics" path="../../JUCE/modules"/>
+        <MODULEPATH id="juce_gui_extra" path="../../JUCE/modules"/>
+        <MODULEPATH id="juce_dsp" path="../../JUCE/modules"/>
+        <MODULEPATH id="viator_modules" path="../viatorModules/viatordsp-main 2"/>
+      </MODULEPATHS>
+    </XCODE_MAC>
+  </EXPORTFORMATS>
+  <MODULES>
+    <MODULE id="juce_audio_basics" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_audio_devices" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_audio_formats" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_audio_plugin_client" showAllCode="1" useLocalCopy="0"
+            useGlobalPath="1"/>
+    <MODULE id="juce_audio_processors" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_audio_utils" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_core" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_data_structures" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_dsp" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_events" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_graphics" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_gui_basics" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_gui_extra" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="viator_modules" showAllCode="1" useLocalCopy="0" useGlobalPath="0"/>
+  </MODULES>
+</JUCERPROJECT>
