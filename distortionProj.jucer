@@ -107,7 +107,7 @@
         <MODULEPATH id="juce_gui_basics" path="../../JUCE/modules"/>
         <MODULEPATH id="juce_gui_extra" path="../../JUCE/modules"/>
         <MODULEPATH id="juce_dsp" path="../../JUCE/modules"/>
-        <MODULEPATH id="viator_modules" path="../viatorModules/viatordsp-main 2"/>
+        <MODULEPATH id="viator_modules" path="viatordsp-main 2"/>
       </MODULEPATHS>
     </XCODE_MAC>
   </EXPORTFORMATS>
