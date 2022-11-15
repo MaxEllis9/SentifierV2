@@ -2,7 +2,7 @@
 
 <JUCERPROJECT id="bcw2Uj" name="distortionPlugInV2" projectType="audioplug"
               useAppConfig="0" addUsingNamespaceToJuceHeader="1" displaySplashScreen="1"
-              jucerFormatVersion="1" cppLanguageStandard="17" headerPath="/usr/local/Cellar/opencv/4.6.0/include/opencv4&#10;/usr/local/include"
+              jucerFormatVersion="1" cppLanguageStandard="17" headerPath="/usr/local/Cellar/opencv/4.6.0_1/include/opencv4&#10;/usr/local/include&#10;/usr/local/Cellar/python@3.10/3.10.8/Frameworks/Python.framework/Headers"
               pluginFormats="buildStandalone,buildVST3" version="2.0">
   <MAINGROUP id="Bj19u2" name="distortionPlugInV2">
     <GROUP id="{B1B8DF92-13F2-F555-0D53-EA2F728CFE65}" name="Source">
@@ -43,12 +43,6 @@
         <FILE id="bXCWn0" name="FFTDataGenerator.h" compile="0" resource="0"
               file="Source/FFTDataGenerator.h"/>
       </GROUP>
-      <FILE id="hvjJQn" name="NeuralNetwork.cpp" compile="1" resource="0"
-            file="Source/NeuralNetwork.cpp"/>
-      <FILE id="HYdJwv" name="NeuralNetwork.h" compile="0" resource="0" file="Source/NeuralNetwork.h"/>
-      <FILE id="ZfBNsW" name="ImageAnalyser.cpp" compile="1" resource="0"
-            file="Source/ImageAnalyser.cpp"/>
-      <FILE id="pDNpO7" name="ImageAnalyser.h" compile="0" resource="0" file="Source/ImageAnalyser.h"/>
       <FILE id="wPbMSX" name="PluginProcessor.cpp" compile="1" resource="0"
             file="Source/PluginProcessor.cpp"/>
       <FILE id="YF6F8n" name="PluginProcessor.h" compile="0" resource="0"
@@ -58,6 +52,7 @@
       <FILE id="i6SD2G" name="PluginEditor.h" compile="0" resource="0" file="Source/PluginEditor.h"/>
     </GROUP>
     <GROUP id="{F4D8FDF2-C35B-998D-97E6-5473B9260CF5}" name="images">
+      <FILE id="OEaBbF" name="logo1.png" compile="0" resource="1" file="../../Downloads/logo1.png"/>
       <FILE id="jP0AaZ" name="button_middle_on.png" compile="0" resource="1"
             file="images/button_middle_on.png"/>
       <FILE id="epYzEL" name="led_off.png" compile="0" resource="1" file="images/led_off.png"/>
@@ -86,7 +81,9 @@
   </MAINGROUP>
   <JUCEOPTIONS JUCE_STRICT_REFCOUNTEDPOINTER="1" JUCE_VST3_CAN_REPLACE_VST2="0"/>
   <EXPORTFORMATS>
-    <XCODE_MAC targetFolder="Builds/MacOSX" extraLinkerFlags="-I/usr/local/opt/opencv/include/opencv4&#10;-L/usr/local/opt/opencv/lib&#10;-lopencv_gapi&#10;-lopencv_stitching&#10;-lopencv_alphamat&#10;-lopencv_aruco&#10;-lopencv_barcode&#10;-lopencv_bgsegm&#10;-lopencv_bioinspired&#10;-lopencv_ccalib&#10;-lopencv_dnn_objdetect&#10;-lopencv_dnn_superres&#10;-lopencv_dpm&#10;-lopencv_face&#10;-lopencv_freetype&#10;-lopencv_fuzzy&#10;-lopencv_hfs&#10;-lopencv_img_hash&#10;-lopencv_intensity_transform&#10;-lopencv_line_descriptor&#10;-lopencv_mcc&#10;-lopencv_quality&#10;-lopencv_rapid&#10;-lopencv_reg&#10;-lopencv_rgbd&#10;-lopencv_saliency&#10;-lopencv_sfm&#10;-lopencv_stereo&#10;-lopencv_structured_light&#10;-lopencv_phase_unwrapping&#10;-lopencv_superres&#10;-lopencv_optflow&#10;-lopencv_surface_matching&#10;-lopencv_tracking&#10;-lopencv_highgui&#10;-lopencv_datasets&#10;-lopencv_text&#10;-lopencv_plot&#10;-lopencv_videostab&#10;-lopencv_videoio&#10;-lopencv_viz&#10;-lopencv_wechat_qrcode&#10;-lopencv_xfeatures2d&#10;-lopencv_shape&#10;-lopencv_ml&#10;-lopencv_ximgproc&#10;-lopencv_video&#10;-lopencv_xobjdetect&#10;-lopencv_objdetect&#10;-lopencv_calib3d&#10;-lopencv_imgcodecs&#10;-lopencv_features2d&#10;-lopencv_dnn&#10;-lopencv_flann&#10;-lopencv_xphoto&#10;-lopencv_photo&#10;-lopencv_imgproc&#10;-lopencv_core">
+    <XCODE_MAC targetFolder="Builds/MacOSX" extraLinkerFlags="-I/usr/local/opt/opencv/include/opencv4&#10;-L/usr/local/opt/opencv/lib&#10;-lopencv_gapi&#10;-lopencv_stitching&#10;-lopencv_alphamat&#10;-lopencv_aruco&#10;-lopencv_barcode&#10;-lopencv_bgsegm&#10;-lopencv_bioinspired&#10;-lopencv_ccalib&#10;-lopencv_dnn_objdetect&#10;-lopencv_dnn_superres&#10;-lopencv_dpm&#10;-lopencv_face&#10;-lopencv_freetype&#10;-lopencv_fuzzy&#10;-lopencv_hfs&#10;-lopencv_img_hash&#10;-lopencv_intensity_transform&#10;-lopencv_line_descriptor&#10;-lopencv_mcc&#10;-lopencv_quality&#10;-lopencv_rapid&#10;-lopencv_reg&#10;-lopencv_rgbd&#10;-lopencv_saliency&#10;-lopencv_sfm&#10;-lopencv_stereo&#10;-lopencv_structured_light&#10;-lopencv_phase_unwrapping&#10;-lopencv_superres&#10;-lopencv_optflow&#10;-lopencv_surface_matching&#10;-lopencv_tracking&#10;-lopencv_highgui&#10;-lopencv_datasets&#10;-lopencv_text&#10;-lopencv_plot&#10;-lopencv_videostab&#10;-lopencv_videoio&#10;-lopencv_viz&#10;-lopencv_wechat_qrcode&#10;-lopencv_xfeatures2d&#10;-lopencv_shape&#10;-lopencv_ml&#10;-lopencv_ximgproc&#10;-lopencv_video&#10;-lopencv_xobjdetect&#10;-lopencv_objdetect&#10;-lopencv_calib3d&#10;-lopencv_imgcodecs&#10;-lopencv_features2d&#10;-lopencv_dnn&#10;-lopencv_flann&#10;-lopencv_xphoto&#10;-lopencv_photo&#10;-lopencv_imgproc&#10;-lopencv_core"
+               extraCustomFrameworks="/usr/local/Cellar/python@3.10/3.10.8/Frameworks/Python.framework"
+               frameworkSearchPaths="/usr/local/Cellar/python@3.10/3.10.8/Frameworks">
       <CONFIGURATIONS>
         <CONFIGURATION isDebug="1" name="Debug" targetName="distortionProj" defines="JUCE_MODAL_LOOPS_PERMITTED=1"
                        macOSDeploymentTarget="12.0" osxCompatibility="12.0 SDK"/>

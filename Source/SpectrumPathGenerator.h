@@ -23,7 +23,7 @@ struct SpectrumPathGenerator
                       float negativeInfinity)
     {
         auto top = fftBounds.getY();
-        auto bottom = fftBounds.getHeight();
+        auto bottom = fftBounds.getBottom();
         auto width = fftBounds.getWidth();
 
         int numBins = (int)fftSize / 2;
@@ -41,7 +41,12 @@ struct SpectrumPathGenerator
         };
 
         auto y = map(renderData[0]);
-        jassert(!std::isnan(y) && !std::isinf(y));
+//        jassert(!std::isnan(y) && !std::isinf(y));
+        
+        if( std::isnan(y) || std::isinf(y) )
+        {
+            y = bottom;
+        }
 
         p.startNewSubPath(0, y);
 
@@ -50,8 +55,6 @@ struct SpectrumPathGenerator
         for(int binNum=1; binNum<numBins; binNum += pathResolution)
         {
             y = map(renderData[binNum]);
-
-            jassert(!std::isnan(y) && !std::isinf(y));
 
             if(!std::isnan(y) && !std::isinf(y)){
                 auto binFreq = binNum * binWidth;

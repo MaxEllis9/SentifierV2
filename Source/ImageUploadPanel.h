@@ -11,16 +11,16 @@
 #pragma once
 
 #include <JuceHeader.h>
+//#include "ImageUploaderManager.h"
 
 namespace Gui
 {
-
     class ImageUploadPanel : public juce::Component, Button::Listener
 
     {
     public:
         
-        ImageUploadPanel(ImageUploadBackend::ImageUploadManager& ium, TextEditor& to) :
+        ImageUploadPanel(ImageUploadManager& ium, TextEditor& to) :
         imageUploadManager(ium),
         textOutput(to)
         {
@@ -28,10 +28,10 @@ namespace Gui
             configureButton(scrollLeft, "<");
             configureButton(scrollRight, ">");
             addAndMakeVisible(imageComp);
-                        
+            
             imageComp.setImage(juce::ImageCache::getFromMemory(BinaryData::imageUpload_png, BinaryData::imageUpload_pngSize));
-//            imageUploadManager.currentImage = File("/Users/max/plugInDev/distortionPlugIn/images/imageUpload.png");
-//            std::cout << BinaryData::getNamedResourceOriginalFilename((BinaryData::namedResourceList[5]);
+            //            imageUploadManager.currentImage = File("/Users/max/plugInDev/distortionPlugIn/images/imageUpload.png");
+            //            std::cout << BinaryData::getNamedResourceOriginalFilename((BinaryData::namedResourceList[5]);
             imageUploaded = false;
             
             //initialise the neural network object
@@ -66,7 +66,7 @@ namespace Gui
             imageComp.setBounds(bounds.reduced(2.f, 10.f));
         }
         
-        ImageUploadBackend::ImageUploadManager getImageUploadManager()
+        ImageUploadManager getImageUploadManager()
         {
             return imageUploadManager;
         }
@@ -84,13 +84,13 @@ namespace Gui
             if(button == &imageUploadButton)
             {
                 fileChooser =  std::make_unique<FileChooser>(
-                    "Select an image to upload"
-                );
+                                                             "Select an image to upload"
+                                                             );
                 textOutput.setText("Loading images from folder...");
-
-
+                
+                
                 fileChooser->launchAsync(FileBrowserComponent::canSelectFiles, [&](const FileChooser& chooser)
-                {
+                                         {
                     const auto result = chooser.getResult();
                     uploadedImage = ImageCache::getFromFile(result);
                     imageComp.setImage(uploadedImage);
@@ -120,7 +120,7 @@ namespace Gui
         }
         
         std::unique_ptr<FileChooser> fileChooser;
-                
+        
         TextButton imageUploadButton, scrollRight, scrollLeft;
         
         ImageComponent imageComp;
@@ -131,17 +131,17 @@ namespace Gui
         
         bool imageUploaded;
         
-        ImageUploadBackend::ImageUploadManager& imageUploadManager;
+        ImageUploadManager& imageUploadManager;
         
         TextEditor& textOutput;
-                
+        
         //neural network object
         
         JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(ImageUploadPanel)
     };
 
+}
 
 //
-    
 
-}
+

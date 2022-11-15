@@ -10,7 +10,6 @@
 #include <JuceHeader.h>
 #include "PluginProcessor.h"
 #include "GainMeter.h"
-#include "ImageAnalyser.h"
 #include "PresetPanel.h"
 #include "ResponseCurve.h"
 #include "ImageUploadPanel.h"
@@ -52,9 +51,7 @@ private:
     DistortionProjAudioProcessor& audioProcessor;
         
     ResponseCurve responseCurveComponent;
-    
-    Label nameLabel;
-    
+        
     Gui::GainMeter GainMeterInL,
     GainMeterInR,
     GainMeterOutL,
@@ -75,7 +72,7 @@ private:
     
     ImageButton onOffSwitch;
         
-    ImageComponent lowPassSymbolImg, highPassSymbolImg;
+    ImageComponent lowPassSymbolImg, highPassSymbolImg, logo;
         
     TextEditor imageAnalysisOutput;
     
@@ -97,7 +94,6 @@ private:
     
     CustomLookAndFeel lnf;
 
-    ImageAnalyser imageAnalyser;
     
     Gui::KnobWithLabel mixKnob,
     lowMidCrossKnob,

@@ -14,36 +14,31 @@
 #include "ImageUploaderManager.h"
 #include "ImageUploadPanel.h"
 
-namespace PresetBackend
-{
-
 class PresetManager : ValueTree::Listener
-    {
-    public:
-      
-        static const File defaultDirectory;
-        static const String fileExtension;
-        static const String presetNameProperty;
-        static String imageFilePathProperty;
-        
-        PresetManager(AudioProcessorValueTreeState& apvts, ImageUploadBackend::ImageUploadManager& ium);
-        
-        void savePreset(const String& presetName);
-        void deletePreset(const String& presetName);
-        void loadPreset(const String& presetName);
-        int loadNextPreset();
-        int loadPrevPreset();
-        StringArray getAllPresets() const;
-        String getCurrentPreset() const;
-        String getCurrentImageString();
-                
-    private:
-        void valueTreeRedirected(juce::ValueTree& treeWhichHasBeenChanged) override;
-        
-        Value currentPreset;
-        Value currentImage;
-        AudioProcessorValueTreeState& valueTreeState;
-        ImageUploadBackend::ImageUploadManager& imageUploadManager;
-    };
-
-}
+{
+public:
+    
+    static const File defaultDirectory;
+    static const String fileExtension;
+    static const String presetNameProperty;
+    static String imageFilePathProperty;
+    
+    PresetManager(AudioProcessorValueTreeState& apvts, ImageUploadManager& ium);
+    
+    void savePreset(const String& presetName);
+    void deletePreset(const String& presetName);
+    void loadPreset(const String& presetName);
+    int loadNextPreset();
+    int loadPrevPreset();
+    StringArray getAllPresets() const;
+    String getCurrentPreset() const;
+    String getCurrentImageString();
+    
+private:
+    void valueTreeRedirected(juce::ValueTree& treeWhichHasBeenChanged) override;
+    
+    Value currentPreset;
+    Value currentImage;
+    AudioProcessorValueTreeState& valueTreeState;
+    ImageUploadManager& imageUploadManager;
+};

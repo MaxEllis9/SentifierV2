@@ -97,122 +97,9 @@ inputGainKnob("Input Gain", -24, 24, "dB", "inputgain", audioProcessor),
 outputGainKnob("Output Gain", -24, 24, "dB", "outputgain", audioProcessor)
 
 {
-    
-    
-    
-//        onOffSwitch.setToggleState(true, dontSendNotification);
-//        driveBypass.setToggleState(false, dontSendNotification);
-//        lowCutBypass.setToggleState(false, dontSendNotification);
-//        highCutBypass.setToggleState(false, dontSendNotification);
-//        inputGainBypass.setToggleState(false, dontSendNotification);
-//        outputGainBypass.setToggleState(false, dontSendNotification);
-//        if(auto* comp = safePtr.getComponent())
-//        {
-//            comp->responseCurveComponent.toggleAnalysisEnablement(true);
-//            comp->GainMeterInL.toggleMeterEnablement(true);
-//            comp->GainMeterInR.toggleMeterEnablement(true);
-//            comp->GainMeterOutL.toggleMeterEnablement(true);
-//            comp->GainMeterOutR.toggleMeterEnablement(true);
-//            comp->onOffBulb.setState(true);
-//        }
-    
-    
-    
-//    loadImageButton.onClick = [&]() {
-//        File imageFile = audioProcessor.loadImageFile();
-//        auto newThumbnail = ImageCache::getFromFile(imageFile);
-//        imageUpload.setImage(newThumbnail);
-//
-//        std::string imagePath = imageFile.getFullPathName().toStdString();
-//        std::vector<float> imageHSVvalues = imageAnalyser.processImage(imagePath);
-//        int hueFromImage = imageHSVvalues[0];
-//        auto saturationFromImage = jmap(imageHSVvalues[1], 0.f, 255.f, 0.f, 20.f);
-//        int valueFromImage = imageHSVvalues[2];
-//
-//        std::cout << saturationFromImage;
-//
-//        switch(hueFromImage)
-//        {
-//            case 0 ... 15 :
-////                output.append("Saturation\n\n");
-//                distortionType.setSelectedId(4);
-//
-//            break;
-//
-//            case 164 ... 179 :
-////                output.append("Saturation\n\n");
-//                distortionType.setSelectedId(4);
-//
-//            break;
-//
-//            case 105 ... 132  :
-////                output.append("Hard Clip\n\n");
-//                distortionType.setSelectedId(3);
-//
-//            break;
-//
-//            case 133 ... 163 :
-////                output.append("Soft Clip\n\n");
-//                distortionType.setSelectedId(2);
-//            break;
-//
-//            case 46 ... 76 :
-////                output.append("Diode Distortion\n\n");
-//                distortionType.setSelectedId(7);
-//
-//            break;
-//
-//            case 16 ... 45 :
-////                output.append("Tape Distortion\n\n");
-//                distortionType.setSelectedId(5);
-//
-//            break;
-//
-//            case 77 ... 104 :
-////                output.append("Tube Distortion\n\n");
-//                distortionType.setSelectedId(6);
-//
-//            break;
-//        }
-//
-//        switch(valueFromImage)
-//        {
-//            case 0 ... 85 :
-////                output.append("Saturation\n\n");
-//                highCutKnob.setValue(500);
-//                lowCutKnob.setValue(0);
-//                highCutKnob.setDoubleClickReturnValue(true,500);
-//                lowCutKnob.setDoubleClickReturnValue(true, 0);
-//
-//            break;
-//
-//            case 86 ... 170  :
-////                output.append("Hard Clip\n\n");
-//                highCutKnob.setValue(2000);
-//                lowCutKnob.setValue(501);
-//                highCutKnob.setDoubleClickReturnValue(true,2000);
-//                lowCutKnob.setDoubleClickReturnValue(true, 501);
-//            break;
-//
-//            case 171 ... 255 :
-////                output.append("Saturation\n\n");
-//                highCutKnob.setValue(22000);
-//                lowCutKnob.setValue(2001);
-//                highCutKnob.setDoubleClickReturnValue(true,22000);
-//                lowCutKnob.setDoubleClickReturnValue(true, 2001);
-//            break;
-//        }
-//
-//        midDriveKnob.setValue(saturationFromImage);
-//        midDriveKnob.setDoubleClickReturnValue(true, saturationFromImage);
-//        imageAnalysisOutput.setText(imageAnalyser.getAnalysisOutputString(hueFromImage, saturationFromImage, valueFromImage));
-//    };
-    
-    auto highPassSymbol = ImageCache::getFromMemory(BinaryData::lowCutNewWhite_png, BinaryData::lowCutNewWhite_pngSize);
-    highPassSymbolImg.setImage(highPassSymbol);
+    highPassSymbolImg.setImage(ImageCache::getFromMemory(BinaryData::lowCutNewWhite_png, BinaryData::lowCutNewWhite_pngSize));
 
-    auto lowPassSymbol = ImageCache::getFromMemory(BinaryData::highCutNewWhite_png, BinaryData::highCutNewWhite_pngSize);
-    lowPassSymbolImg.setImage(lowPassSymbol);
+    lowPassSymbolImg.setImage(ImageCache::getFromMemory(BinaryData::highCutNewWhite_png, BinaryData::highCutNewWhite_pngSize));
     
     for(auto* comps : getComponents()){
         addAndMakeVisible(comps);
@@ -227,7 +114,9 @@ outputGainKnob("Output Gain", -24, 24, "dB", "outputgain", audioProcessor)
     
     configureOnOffSwitch(onOffSwitch);
     
-    configureLabel("Insert Name Here", nameLabel);
+    logo.setImage(ImageCache::getFromMemory(BinaryData::logo1_png, BinaryData::logo1_pngSize));
+    
+//    configureLabel("Insert Name Here", nameLabel);
     
     imageAnalysisOutput.setMultiLine(true, true);
     imageAnalysisOutput.setReadOnly(true);
@@ -445,59 +334,12 @@ void DistortionProjAudioProcessorEditor::paint (juce::Graphics& g)
     };
     
     auto lowMidX = mapX(lowMidCrossKnob.getKnobComponent().getValue(), left, width);
-    g.setColour(Colours::slategrey);
+    g.setColour(Colours::skyblue);
     g.fillRect(Rectangle<float>(lowMidX-2, top, 4.f, bottom-top));
     
     auto midHighX = mapX(midHighCrossKnob.getKnobComponent().getValue(), left, width);
     g.fillRect(Rectangle<float>(midHighX-2, top, 4.f, bottom-top));
 
-    
-    
-//    auto& lowcut = monoChain.get<ChainPositions::lowCut>();
-//    auto& highcut = monoChain.get<ChainPositions::highCut>();
-//
-//    auto sampleRate = audioProcessor.getSampleRate();
-//    auto w = graphArea.getWidth();
-//
-//
-//    std::vector<double> mags;
-//
-//    mags.resize(w);
-//
-//    for(int i = 0; i < w; ++i)
-//    {
-//        double mag = 1.f;
-//        auto freq = mapToLog10(double(i) / double(w), 20.0, 20000.0);
-//
-//        if(!monoChain.isBypassed<ChainPositions::lowCut>()){
-//            mag *= lowcut.coefficients->getMagnitudeForFrequency(freq, sampleRate);
-//        }
-//        if(!monoChain.isBypassed<ChainPositions::highCut>()){
-//            mag *= highcut.coefficients->getMagnitudeForFrequency(freq, sampleRate);
-//        }
-//
-//
-//        mags[i] = Decibels::gainToDecibels(mag);
-//    }
-//
-//    Path responseCurve;
-//
-//    const double outputMin = graphArea.getBottom();
-//    const double outputMax = graphArea.getY();
-//    auto map = [outputMin, outputMax](double input)
-//    {
-//        return jmap(input, -24.0, 24.0, outputMin, outputMax);
-//    };
-//
-//    responseCurve.startNewSubPath(graphArea.getX(), map(mags.front()));
-//
-//    for(size_t i = 1; i<mags.size(); ++i)
-//    {
-//        responseCurve.lineTo(graphArea.getX() + i, map(mags[i]));
-//    }
-//
-//    g.setColour(Colours::white);
-//    g.strokePath(responseCurve, PathStrokeType(2.f));
     
 }
 
@@ -515,8 +357,16 @@ void DistortionProjAudioProcessorEditor::resized()
     metersArea = metersArea.reduced(5.f, 4.f);
     auto meters = metersArea.removeFromBottom(metersArea.getHeight() * 0.75);
     auto gainControls = metersArea;
-    auto leftMeter = meters.removeFromLeft(meters.getWidth() * 0.5).reduced(20.f, 0.f);
-    auto rightMeter = meters.reduced(20.f, 0.f);
+    auto leftMeter = meters.removeFromLeft(meters.getWidth() * 0.5);
+    auto leftMeterSpacer = leftMeter.removeFromLeft(leftMeter.getWidth() * 0.25);
+    auto leftLeftMeter = leftMeter.removeFromLeft(leftMeter.proportionOfWidth(0.33));
+    auto rightLeftMeter = leftMeter.removeFromLeft(leftMeter.proportionOfWidth(0.5));
+    
+    auto rightMeter = meters;
+    auto rightMeterSpacer = rightMeter.removeFromLeft(rightMeter.getWidth() * 0.25);
+    auto leftRightMeter = rightMeter.removeFromLeft(rightMeter.proportionOfWidth(0.33));
+    auto rightRightMeter = rightMeter.removeFromLeft(rightMeter.proportionOfWidth(0.5));
+    
     thumbnail = thumbnail.reduced(4.f);
     auto spectrumArea = bounds.removeFromTop(bounds.getHeight() * 0.45).reduced(4.f);
     auto description = bounds.removeFromRight(bounds.getWidth() * 0.25);
@@ -541,7 +391,7 @@ void DistortionProjAudioProcessorEditor::resized()
     
     
     presetPanel.setBounds(menu);
-    nameLabel.setBounds(titleBar);
+    logo.setBounds(titleBar.expanded(25.f));
     imageAnalysisOutput.setBounds(description.reduced(4.f));
     imageUploadPanel.setBounds(thumbnail);
     
@@ -562,10 +412,10 @@ void DistortionProjAudioProcessorEditor::resized()
     inputGainKnob.setBounds(gainControls.removeFromLeft(gainControls.getWidth() * 0.5));
     outputGainKnob.setBounds(gainControls);
     
-    GainMeterInL.setBounds(leftMeter.removeFromLeft(leftMeter.getWidth() * 0.5));
-    GainMeterInR.setBounds(leftMeter);
-    GainMeterOutL.setBounds(rightMeter.removeFromLeft(rightMeter.getWidth() * 0.5));
-    GainMeterOutR.setBounds(rightMeter);
+    GainMeterInL.setBounds(leftLeftMeter);
+    GainMeterInR.setBounds(rightLeftMeter);
+    GainMeterOutL.setBounds(leftRightMeter);
+    GainMeterOutR.setBounds(rightRightMeter);
 
     responseCurveComponent.setBounds(spectrumGraph);
     
@@ -594,7 +444,7 @@ std::vector<juce::Component*> DistortionProjAudioProcessorEditor::getComponents(
         &GainMeterOutL,
         &GainMeterInL,
         &GainMeterInR,
-        &nameLabel,
+        &logo,
         &imageAnalysisOutput,
         &lowPassSymbolImg,
         &highPassSymbolImg,

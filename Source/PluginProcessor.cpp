@@ -47,11 +47,11 @@ DistortionProjAudioProcessor::DistortionProjAudioProcessor()
         jassert(param != nullptr);
     };
     
-    apvts.state.setProperty(PresetBackend::PresetManager::presetNameProperty, "", nullptr);
+    apvts.state.setProperty(PresetManager::presetNameProperty, "", nullptr);
     apvts.state.setProperty("version", ProjectInfo::versionString, nullptr);
-    apvts.state.setProperty(PresetBackend::PresetManager::imageFilePathProperty, imageUploadManager.getCurrentImagePath(), nullptr);
+    apvts.state.setProperty(PresetManager::imageFilePathProperty, imageUploadManager.getCurrentImagePath(), nullptr);
     
-    presetManager = std::make_unique<PresetBackend::PresetManager>(apvts, imageUploadManager);
+    presetManager = std::make_unique<PresetManager>(apvts, imageUploadManager);
 
     boolHelper(lowDistBand.bypass, "lowBand Bypass");
     boolHelper(midDistBand.bypass, "midBand Bypass");
@@ -435,7 +435,6 @@ ChainSettings getChainSettings(AudioProcessorValueTreeState& apvts)
     settings.inputgain = apvts.getRawParameterValue("inputgain")->load();
     settings.outputgain = apvts.getRawParameterValue("outputgain")->load();
     settings.mix = apvts.getRawParameterValue("mix")->load();
-//    settings.distortionMode = apvts.getRawParameterValue("distortion mode")->load();
     settings.lowBandFreq = apvts.getRawParameterValue("crossoverLowMid")->load();
     settings.highBandFreq = apvts.getRawParameterValue("crossoverMidHigh")->load();
     settings.powerSwitch = apvts.getRawParameterValue("power switch")->load() > 0.5f;
@@ -450,8 +449,9 @@ ChainSettings getChainSettings(AudioProcessorValueTreeState& apvts)
     settings.lowBandSolo = apvts.getRawParameterValue("lowBand Solo")->load() > 0.5f;
     settings.midBandSolo = apvts.getRawParameterValue("midBand Solo")->load() > 0.5f;
     settings.highBandSolo = apvts.getRawParameterValue("highBand Solo")->load() > 0.5f;
-
-    
+    settings.lowDistortionMode = apvts.getRawParameterValue("lowDistortion mode")->load();
+    settings.midDistortionMode = apvts.getRawParameterValue("midDistortion mode")->load();
+    settings.highDistortionMode = apvts.getRawParameterValue("highDistortion mode")->load();
     
     return settings;
 }

@@ -11,10 +11,11 @@
 #pragma once
 
 #include <JuceHeader.h>
+#include "KnobComponent.h"
 
 namespace Gui
 {
-    class DistBandControlPanel : public juce::Component, ComboBox::Listener
+    class DistBandControlPanel : public juce::Component
     {
     public:
         DistBandControlPanel(const String nameString,
@@ -31,15 +32,14 @@ namespace Gui
         bypass(2, true, "B", false),
     
         driveKnobAttachment(audioProcessor.apvts, driveParam, driveKnob),
+        distortionTypeAttachment(audioProcessor.apvts, distortionSelector, distortionType),
         soloAttachment(audioProcessor.apvts, soloParam, solo),
         muteAttachment(audioProcessor.apvts, muteParam, mute),
-        bypassAttachment(audioProcessor.apvts, bypassParam, bypass),
-        distortionTypeAttachment(audioProcessor.apvts, distortionSelector, distortionType)
+        bypassAttachment(audioProcessor.apvts, bypassParam, bypass)
         
         {
-            bandLabel.setText(nameString, dontSendNotification);
-            bandLabel.setJustificationType(juce::Justification::centred);
-            bandLabel.setColour(Label::ColourIds::textColourId, Colours::gainsboro);
+            configureLabel(nameString, bandLabel);
+            configureLabel("Drive", driveLabel);
             
             distortionType.addItem("Distortion Type", 1);
             distortionType.addItem("Soft Clip", 2);
@@ -55,7 +55,6 @@ namespace Gui
             distortionType.setColour(ComboBox::ColourIds::outlineColourId, Colour(61, 15, 18));
             distortionType.setColour(ComboBox::ColourIds::textColourId, Colours::gainsboro);
             distortionType.setJustificationType(juce::Justification::centred);
-            distortionType.addListener(this);
             
             comboBoxLnF.setColour(PopupMenu::ColourIds::backgroundColourId, Colours::black);
             comboBoxLnF.setColour(PopupMenu::ColourIds::highlightedBackgroundColourId, Colour(102, 25, 30));
@@ -65,6 +64,7 @@ namespace Gui
             
             addAndMakeVisible(distortionType);
             addAndMakeVisible(bandLabel);
+            addAndMakeVisible(driveLabel);
             addAndMakeVisible(driveKnob);
             addAndMakeVisible(solo);
             addAndMakeVisible(bypass);
@@ -74,7 +74,6 @@ namespace Gui
         
         ~DistBandControlPanel()
         {
-            distortionType.removeListener(this);
             distortionType.setLookAndFeel(nullptr);
         }
         
@@ -86,16 +85,24 @@ namespace Gui
             
             bandLabel.setBounds(bounds.removeFromTop(container.proportionOfHeight(0.1)));
             distortionType.setBounds(bounds.removeFromTop(container.proportionOfHeight(0.2)).reduced(10.f, 5.f));
-            driveKnob.setBounds(bounds.removeFromRight(container.proportionOfWidth(0.6)));
-            solo.setBounds(bounds.removeFromTop(bounds.getHeight() * 0.33).reduced(0, 5.f));
-            mute.setBounds(bounds.removeFromTop(bounds.getHeight() * 0.5).reduced(0, 5.f));
-            bypass.setBounds(bounds.reduced(0, 5.f));
+            
+            auto smbButtons = bounds.removeFromLeft(container.proportionOfWidth(0.4));
+            
+            solo.setBounds(smbButtons.removeFromTop(smbButtons.getHeight() * 0.33).reduced(0, 5.f));
+            mute.setBounds(smbButtons.removeFromTop(smbButtons.getHeight() * 0.5).reduced(0, 5.f));
+            bypass.setBounds(smbButtons.reduced(0, 5.f));
+            
+            driveLabel.setBounds(bounds.removeFromTop(bounds.proportionOfHeight(0.15)));
+            driveKnob.setBounds(bounds);
+
             
         }
         
-        void comboBoxChanged(ComboBox* comboBoxThatHasChanged) override
+        void configureLabel(const String& labelString, Label& labelComp)
         {
-            
+            labelComp.setText(labelString, dontSendNotification);
+            labelComp.setJustificationType(juce::Justification::centred);
+            labelComp.setColour(Label::ColourIds::textColourId, Colours::gainsboro);
         }
         
 
@@ -106,10 +113,10 @@ namespace Gui
         
         DistortionProjAudioProcessor& audioProcessor;
         
-        Label bandLabel;
+        Label bandLabel, driveLabel;
         
         viator_gui::FilmStripKnob driveKnob;
-        
+                
         viator_gui::ToggleButton solo, mute, bypass;
         
         APVTS::SliderAttachment driveKnobAttachment;

@@ -17,7 +17,7 @@ namespace Gui
     class PresetPanel : public Component, Button::Listener, ComboBox::Listener
     {
     public:
-        PresetPanel(PresetBackend::PresetManager& pm, Gui::ImageUploadPanel& iup) : presetManager(pm), imageUploadPanel(iup)
+        PresetPanel(PresetManager& pm, ImageUploadPanel& iup) : presetManager(pm), imageUploadPanel(iup)
         {
             configureButton(saveButton, "Save");
             configureButton(deleteButton, "Delete");
@@ -68,7 +68,7 @@ namespace Gui
             deleteButton.setBounds(bounds.removeFromLeft(container.proportionOfWidth(0.165f)).reduced(2.f, 5.f));
         }
         
-        PresetBackend::PresetManager getPresetManager()
+        PresetManager getPresetManager()
         {
             return presetManager;
         }
@@ -82,8 +82,8 @@ namespace Gui
             {
                 fileChooser =  std::make_unique<FileChooser>(
                     "Please enter the name of the preset to save",
-                    PresetBackend::PresetManager::defaultDirectory,
-                    "*." + PresetBackend::PresetManager::fileExtension
+                                                             PresetManager::defaultDirectory,
+                                                             "*." + PresetManager::fileExtension
                 );
                 fileChooser->launchAsync(FileBrowserComponent::saveMode, [&](const FileChooser& chooser)
                 {
@@ -161,9 +161,9 @@ namespace Gui
             imageUploadPanel.setImage(newImage);
         }
         
-        PresetBackend::PresetManager& presetManager;
+        PresetManager& presetManager;
         
-        Gui::ImageUploadPanel& imageUploadPanel;
+        ImageUploadPanel& imageUploadPanel;
         
         TextButton saveButton, deleteButton, prevButton, nextButton, initButton;
         ComboBox presetList;
