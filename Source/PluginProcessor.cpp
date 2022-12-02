@@ -16,6 +16,7 @@ enum ChainPositions
     highCut
 };
 
+
 //==============================================================================
 DistortionProjAudioProcessor::DistortionProjAudioProcessor()
 #ifndef JucePlugin_PreferredChannelConfigurations
@@ -52,7 +53,8 @@ DistortionProjAudioProcessor::DistortionProjAudioProcessor()
     apvts.state.setProperty(PresetManager::imageFilePathProperty, imageUploadManager.getCurrentImagePath(), nullptr);
     
     presetManager = std::make_unique<PresetManager>(apvts, imageUploadManager);
-
+    
+    
     boolHelper(lowDistBand.bypass, "lowBand Bypass");
     boolHelper(midDistBand.bypass, "midBand Bypass");
     boolHelper(highDistBand.bypass, "highBand Bypass");
@@ -76,6 +78,9 @@ DistortionProjAudioProcessor::DistortionProjAudioProcessor()
     choiceHelper(lowDistBand.distortionType, "lowDistortion mode");
     choiceHelper(midDistBand.distortionType, "midDistortion mode");
     choiceHelper(highDistBand.distortionType, "highDistortion mode");
+    
+    imageUploadManager.imageManagerTreeP = &apvts;
+
     
 
 //    initial multibnand stuff from yt vid
@@ -285,7 +290,6 @@ void DistortionProjAudioProcessor::processBlock (juce::AudioBuffer<float>& buffe
         auto fb0block = juce::dsp::AudioBlock<float>(filterBuffers[0]);
         auto fb1block = juce::dsp::AudioBlock<float>(filterBuffers[1]);
         auto fb2block = juce::dsp::AudioBlock<float>(filterBuffers[2]);
-
 
         auto fb0ctxt = juce::dsp::ProcessContextReplacing<float>(fb0block);
         auto fb1ctxt = juce::dsp::ProcessContextReplacing<float>(fb1block);
@@ -530,7 +534,7 @@ AudioProcessorValueTreeState::ParameterLayout DistortionProjAudioProcessor::crea
     layout.add(std::make_unique<AudioParameterFloat>("mix",
                                                      "Mix",
                                                      NormalisableRange<float>(0.f, 100.f, 1.f, 1.f),
-                                                     50.f));
+                                                     100.f));
     
     layout.add(std::make_unique<AudioParameterFloat>("lowdrive",
                                                      "lowDrive",

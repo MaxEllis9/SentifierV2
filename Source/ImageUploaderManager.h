@@ -11,38 +11,7 @@
 #pragma once
 
 #include <JuceHeader.h>
-#define PY_SSIZE_T_CLEAN
-#include <Python.h>
-#include <fstream>
-
-
-// python predict.py images_list.txt --model vgg19_finetuned_all --batch-size 64 > predictions.csv
-
-class ImageClassifier
-{
-public:
-    static const std::string sentimentOutputFilename;
-
-    ImageClassifier();
-
-    ~ImageClassifier();
-
-    std::vector<std::string> getSentimentPredictions(std::string fname);
-
-    void createPatch();
-
-    float getDriveMapping(float sentimentValue);
-
-    //    const char pythonFileName[];
-    //
-    //    FILE* pythonFile;
-private:
-
-
-};
-
-
-
+#include "ImageClassifier.h"
 
 class ImageUploadManager
 {
@@ -62,7 +31,11 @@ public:
     Array<File> allImages;
     File currentImage;
     
-    //        ImageClassifier imageClassifier;
+    ImageClassifier imageClassifier;
+    
+    AudioProcessorValueTreeState* imageManagerTreeP;
+    
+    String analysisOutput;
     
 private:
     

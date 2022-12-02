@@ -11,7 +11,6 @@
 #pragma once
 
 #include <JuceHeader.h>
-//#include "ImageUploaderManager.h"
 
 namespace Gui
 {
@@ -30,7 +29,7 @@ namespace Gui
             addAndMakeVisible(imageComp);
             
             imageComp.setImage(juce::ImageCache::getFromMemory(BinaryData::imageUpload_png, BinaryData::imageUpload_pngSize));
-            //            imageUploadManager.currentImage = File("/Users/max/plugInDev/distortionPlugIn/images/imageUpload.png");
+                imageUploadManager.currentImage = File("/Users/max/plugInDev/distortionPlugInV2/images/imageUpload.png");
             //            std::cout << BinaryData::getNamedResourceOriginalFilename((BinaryData::namedResourceList[5]);
             imageUploaded = false;
             
@@ -86,7 +85,7 @@ namespace Gui
                 fileChooser =  std::make_unique<FileChooser>(
                                                              "Select an image to upload"
                                                              );
-                textOutput.setText("Loading images from folder...");
+                textOutput.setText("Analysing image and loading all images from folder...");
                 
                 
                 fileChooser->launchAsync(FileBrowserComponent::canSelectFiles, [&](const FileChooser& chooser)
@@ -95,7 +94,7 @@ namespace Gui
                     uploadedImage = ImageCache::getFromFile(result);
                     imageComp.setImage(uploadedImage);
                     imageUploadManager.uploadImage(result);
-                    textOutput.setText("Images loaded");
+                    textOutput.setText("Images loaded and analysis complete.\n\n" + imageUploadManager.analysisOutput);
                 });
                 imageUploaded = true;
             }
@@ -103,17 +102,33 @@ namespace Gui
             if(button == &scrollLeft && imageUploaded == true)
             {
                 const auto index = imageUploadManager.loadPrevImage();
-                Image newImage = ImageCache::getFromFile(imageUploadManager.allImages[index]);
-                imageComp.setImage(newImage);
-                imageUploadManager.currentImage = imageUploadManager.allImages[index];
+                if(index != -1)
+                {
+                    Image newImage = ImageCache::getFromFile(imageUploadManager.allImages[index]);
+                    imageComp.setImage(newImage);
+                    imageUploadManager.currentImage = imageUploadManager.allImages[index];
+                    textOutput.setText(imageUploadManager.analysisOutput);
+                }
+                else
+                {
+                    textOutput.setText("Could not load all images from parent folder");
+                }
             }
             
             if(button == &scrollRight && imageUploaded == true)
             {
                 const auto index = imageUploadManager.loadNextImage();
-                Image newImage = ImageCache::getFromFile(imageUploadManager.allImages[index]);
-                imageComp.setImage(newImage);
-                imageUploadManager.currentImage = imageUploadManager.allImages[index];
+                if(index != -1)
+                {
+                    Image newImage = ImageCache::getFromFile(imageUploadManager.allImages[index]);
+                    imageComp.setImage(newImage);
+                    imageUploadManager.currentImage = imageUploadManager.allImages[index];
+                    textOutput.setText(imageUploadManager.analysisOutput);
+                }
+                else
+                {
+                    textOutput.setText("Could not load all images from parent folder");
+                }
             }
             
             //image analysis using neural network

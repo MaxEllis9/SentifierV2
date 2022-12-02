@@ -59,7 +59,7 @@ void CustomLookAndFeel::drawToggleButton(juce::Graphics &g,
     
 }
 
-//==============================================================================
+//===================================================================
 DistortionProjAudioProcessorEditor::DistortionProjAudioProcessorEditor (DistortionProjAudioProcessor& p)
     : AudioProcessorEditor (&p), audioProcessor (p),
 
@@ -147,7 +147,6 @@ outputGainKnob("Output Gain", -24, 24, "dB", "outputgain", audioProcessor)
     };
     
     onOffSwitch.setComponentID("onOffSwitch");
-
         
     setSize (1100, 650);
 }

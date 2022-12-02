@@ -15,6 +15,7 @@
 #include "ImageUploadPanel.h"
 #include "DistortionBandControls.h"
 #include "KnobComponent.h"
+#include "ImageClassifier.h"
 
 struct CustomLookAndFeel : juce::LookAndFeel_V4
 {
@@ -25,6 +26,7 @@ struct CustomLookAndFeel : juce::LookAndFeel_V4
 };
 
 struct PowerButton : juce::ToggleButton {};
+
 
 
 //==============================================================================
@@ -94,12 +96,11 @@ private:
     
     CustomLookAndFeel lnf;
 
-    
     Gui::KnobWithLabel mixKnob,
     lowMidCrossKnob,
     midHighCrossKnob,
     inputGainKnob,
     outputGainKnob;
-        
+            
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (DistortionProjAudioProcessorEditor)
 };

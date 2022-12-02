@@ -105,6 +105,7 @@ namespace Gui
             labelComp.setColour(Label::ColourIds::textColourId, Colours::gainsboro);
         }
         
+        viator_gui::FilmStripKnob driveKnob;
 
         
     private:
@@ -115,7 +116,6 @@ namespace Gui
         
         Label bandLabel, driveLabel;
         
-        viator_gui::FilmStripKnob driveKnob;
                 
         viator_gui::ToggleButton solo, mute, bypass;
         

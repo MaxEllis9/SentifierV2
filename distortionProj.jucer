@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<JUCERPROJECT id="bcw2Uj" name="distortionPlugInV2" projectType="audioplug"
-              useAppConfig="0" addUsingNamespaceToJuceHeader="1" displaySplashScreen="1"
-              jucerFormatVersion="1" cppLanguageStandard="17" headerPath="/usr/local/Cellar/opencv/4.6.0_1/include/opencv4&#10;/usr/local/include&#10;/usr/local/Cellar/python@3.10/3.10.8/Frameworks/Python.framework/Headers"
+<JUCERPROJECT id="bcw2Uj" name="SentifierV2" projectType="audioplug" useAppConfig="0"
+              addUsingNamespaceToJuceHeader="1" displaySplashScreen="1" jucerFormatVersion="1"
+              cppLanguageStandard="17" headerPath="/usr/local/Cellar/opencv/4.6.0_1/include/opencv4&#10;/usr/local/include&#10;/usr/local/Cellar/python@3.10/3.10.8/Frameworks/Python.framework/Headers"
               pluginFormats="buildStandalone,buildVST3" version="2.0">
-  <MAINGROUP id="Bj19u2" name="distortionPlugInV2">
+  <MAINGROUP id="Bj19u2" name="SentifierV2">
     <GROUP id="{B1B8DF92-13F2-F555-0D53-EA2F728CFE65}" name="Source">
+      <FILE id="WBu1BZ" name="ChainSettings.h" compile="0" resource="0" file="Source/ChainSettings.h"/>
       <FILE id="nUy8K6" name="KnobComponent.h" compile="0" resource="0" file="Source/KnobComponent.h"/>
       <GROUP id="{ACF1510D-7160-8DC9-CDF0-8AB9DAC1F718}" name="DistortionBands">
         <FILE id="ijgp9g" name="DistortionBand.h" compile="0" resource="0"
@@ -17,6 +18,10 @@
         <FILE id="yYTzFC" name="GainMeter.h" compile="0" resource="0" file="Source/GainMeter.h"/>
       </GROUP>
       <GROUP id="{3BC8A4CC-DB06-BE8C-02CE-4C3FA26E78EB}" name="ImageUploader">
+        <FILE id="jNNMHj" name="ImageClassifier.cpp" compile="1" resource="0"
+              file="Source/ImageClassifier.cpp"/>
+        <FILE id="maaHvx" name="ImageClassifier.h" compile="0" resource="0"
+              file="Source/ImageClassifier.h"/>
         <FILE id="eFfeWt" name="ImageUploaderManager.cpp" compile="1" resource="0"
               file="Source/ImageUploaderManager.cpp"/>
         <FILE id="kXb4Ts" name="ImageUploaderManager.h" compile="0" resource="0"
@@ -52,7 +57,7 @@
       <FILE id="i6SD2G" name="PluginEditor.h" compile="0" resource="0" file="Source/PluginEditor.h"/>
     </GROUP>
     <GROUP id="{F4D8FDF2-C35B-998D-97E6-5473B9260CF5}" name="images">
-      <FILE id="OEaBbF" name="logo1.png" compile="0" resource="1" file="../../Downloads/logo1.png"/>
+      <FILE id="SZIEnm" name="logo1.png" compile="0" resource="1" file="images/logo1.png"/>
       <FILE id="jP0AaZ" name="button_middle_on.png" compile="0" resource="1"
             file="images/button_middle_on.png"/>
       <FILE id="epYzEL" name="led_off.png" compile="0" resource="1" file="images/led_off.png"/>

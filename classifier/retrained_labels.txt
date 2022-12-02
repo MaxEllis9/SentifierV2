@@ -1,0 +1,6 @@
+love
+sad
+violent
+awe
+fear
+happy

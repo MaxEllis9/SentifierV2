@@ -13,6 +13,7 @@
 const File PresetManager::defaultDirectory(File::getSpecialLocation(File::SpecialLocationType::commonDocumentsDirectory)
                                            .getChildFile(ProjectInfo::companyName)
                                            .getChildFile(ProjectInfo::projectName)
+                                           .getChildFile("presets")
                                            );
 
 const String PresetManager::fileExtension("preset");
