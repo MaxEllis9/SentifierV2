@@ -48,12 +48,16 @@ ImageClassifier::ImageClassifier()
         predictionsFile.close();
     }
     
-    
-    
+    Py_Initialize();
+    PyRun_SimpleString("import sys");
+    PyRun_SimpleString("sys.path.append('/Users/max/plugInDev/distortionPlugInV2/tensor-guess-master')");
+    PyRun_SimpleString("sys.argv[0] = 'label_image.py'");
+    PyRun_SimpleString("sys.argv.append('')");
 }
 
 ImageClassifier::~ImageClassifier()
 {
+    Py_Finalize();
 }
 
 vector<vector<string>> ImageClassifier::getSentimentPredictions(string fname)
@@ -94,19 +98,13 @@ vector<vector<string>> ImageClassifier::getSentimentPredictions(string fname)
 
 void ImageClassifier::classifyImage(File image)
 {
-    string argString = "sys.argv.append('" + image.getFullPathName().toStdString() + "')";
+    string argString = "sys.argv[1] = '" + image.getFullPathName().toStdString() + "'";
     cout << argString << endl;
-    
+
     const char* cArgString = argString.c_str();
-    
-    Py_Initialize();
-    
-    PyRun_SimpleString("import sys");
-    PyRun_SimpleString("sys.path.append('/Users/max/plugInDev/distortionPlugInV2/tensor-guess-master')");
-    PyRun_SimpleString("sys.argv[0] = 'label_image.py'");
+       
     PyRun_SimpleString(cArgString);
     PyRun_SimpleString("exec(open('/Users/max/plugInDev/distortionPlugInV2/tensor-guess-master/src/label_image.py').read())");
-    Py_Finalize();
 
 }
 
