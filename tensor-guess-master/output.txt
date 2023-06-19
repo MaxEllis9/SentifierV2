@@ -1,6 +1,6 @@
-love,0.41975
-awe,0.32958
-happy,0.19770
-fear,0.04568
-violent,0.00659
-sad,0.00070
+awe,0.85403
+love,0.08506
+sad,0.02803
+happy,0.02421
+violent,0.00472
+fear,0.00396

@@ -19,6 +19,7 @@ const File PresetManager::defaultDirectory(File::getSpecialLocation(File::Specia
 const String PresetManager::fileExtension("preset");
 const String PresetManager::presetNameProperty("presetName");
 String PresetManager::imageFilePathProperty("currentImagePath");
+String PresetManager::analysisStringProperty("analysisString");
 
 PresetManager::PresetManager(AudioProcessorValueTreeState& apvts, ImageUploadManager& ium) :
 valueTreeState(apvts), imageUploadManager(ium)
@@ -36,6 +37,7 @@ valueTreeState(apvts), imageUploadManager(ium)
     valueTreeState.state.addListener(this);
     currentPreset.referTo(valueTreeState.state.getPropertyAsValue(presetNameProperty, nullptr));
     currentImage.referTo(valueTreeState.state.getPropertyAsValue(imageFilePathProperty, nullptr));
+    analysisString.referTo(valueTreeState.state.getPropertyAsValue(analysisStringProperty, nullptr));
     
     savePreset("init");
     
@@ -49,7 +51,13 @@ void PresetManager::savePreset(const String& presetName)
     }
     currentPreset.setValue(presetName);
     currentImage.setValue(imageUploadManager.getCurrentImagePath());
-    
+    if(presetName.equalsIgnoreCase("init"))
+    {
+        analysisString.setValue("Upload an JPEG or PNG image to generate a patch");
+    }
+    else{
+        analysisString.setValue(imageUploadManager.analysisOutput);
+    }
     
     const auto xml = valueTreeState.copyState().createXml();
     const auto presetFile = defaultDirectory.getChildFile(presetName + "." + fileExtension);
@@ -81,6 +89,7 @@ void PresetManager::deletePreset(const String& presetName)
     }
     currentPreset.setValue("");
     currentImage.setValue("");
+    analysisString.setValue("");
 }
 
 void PresetManager::loadPreset(const String& presetName)
@@ -103,6 +112,7 @@ void PresetManager::loadPreset(const String& presetName)
     valueTreeState.replaceState(valueTreeToLoad);
     currentPreset.setValue(presetName);
     currentImage.setValue(valueTreeToLoad.getProperty("currentImagePath"));
+    analysisString.setValue(valueTreeToLoad.getProperty("analysisString"));
 }
 
 int PresetManager::loadNextPreset()
@@ -151,11 +161,17 @@ void PresetManager::valueTreeRedirected(juce::ValueTree& treeWhichHasBeenChanged
 {
     currentPreset.referTo(treeWhichHasBeenChanged.getPropertyAsValue(presetNameProperty, nullptr));
     currentImage.referTo(treeWhichHasBeenChanged.getPropertyAsValue(imageFilePathProperty, nullptr));
+    analysisString.referTo(treeWhichHasBeenChanged.getPropertyAsValue(analysisStringProperty, nullptr));
     
 }
 
 String PresetManager::getCurrentImageString()
 {
     return currentImage.toString();
+}
+
+String PresetManager::getAnalysisString()
+{
+    return analysisString.toString();
 }
 

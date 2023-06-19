@@ -22,6 +22,7 @@ public:
     static const String fileExtension;
     static const String presetNameProperty;
     static String imageFilePathProperty;
+    static String analysisStringProperty;
     
     PresetManager(AudioProcessorValueTreeState& apvts, ImageUploadManager& ium);
     
@@ -33,12 +34,14 @@ public:
     StringArray getAllPresets() const;
     String getCurrentPreset() const;
     String getCurrentImageString();
+    String getAnalysisString();
     
 private:
     void valueTreeRedirected(juce::ValueTree& treeWhichHasBeenChanged) override;
     
     Value currentPreset;
     Value currentImage;
+    Value analysisString;
     AudioProcessorValueTreeState& valueTreeState;
     ImageUploadManager& imageUploadManager;
 };

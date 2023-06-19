@@ -97,12 +97,14 @@ namespace Gui
                 const auto index = presetManager.loadPrevPreset();
                 presetList.setSelectedItemIndex(index, dontSendNotification);
                 updateImage(presetManager.getCurrentImageString());
+                imageUploadPanel.textOutput.setText(presetManager.getAnalysisString());
             }
             if(button == &nextButton)
             {
                 const auto index = presetManager.loadNextPreset();
                 presetList.setSelectedItemIndex(index, dontSendNotification);
                 updateImage(presetManager.getCurrentImageString());
+                imageUploadPanel.textOutput.setText(presetManager.getAnalysisString());
             }
             if(button == &deleteButton)
             {
@@ -120,6 +122,7 @@ namespace Gui
                 presetManager.loadPreset("init");
                 loadPresetList();
                 updateImage(presetManager.getCurrentImageString());
+                imageUploadPanel.textOutput.setText(presetManager.getAnalysisString());
             }
         }
         
@@ -129,6 +132,7 @@ namespace Gui
                 {
                     presetManager.loadPreset(presetList.getItemText(presetList.getSelectedItemIndex()));
                     updateImage(presetManager.getCurrentImageString());
+                    imageUploadPanel.textOutput.setText(presetManager.getAnalysisString());
                 }
         }
         

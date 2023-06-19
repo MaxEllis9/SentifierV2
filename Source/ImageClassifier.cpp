@@ -159,8 +159,6 @@ String ImageClassifier::createPatch(File image)
     
     humanFile.close();
     
-    cout << output << endl;
-    
     return output;
 
 }

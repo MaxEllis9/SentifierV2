@@ -14,7 +14,7 @@ File ImageUploadManager::parentDirectory(File::getSpecialLocation(File::SpecialL
 
 ImageUploadManager::ImageUploadManager()
 {
-    currentImage = File("/Users/max/plugInDev/distortionPlugIn/images/imageUpload.png");
+    currentImage = File("/Users/max/plugInDev/distortionPlugInV2/images/imageUpload.png");
 }
 
 ImageUploadManager::~ImageUploadManager()

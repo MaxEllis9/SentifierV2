@@ -29,12 +29,9 @@ namespace Gui
             addAndMakeVisible(imageComp);
             
             imageComp.setImage(juce::ImageCache::getFromMemory(BinaryData::imageUpload_png, BinaryData::imageUpload_pngSize));
-                imageUploadManager.currentImage = File("/Users/max/plugInDev/distortionPlugInV2/images/imageUpload.png");
-            //            std::cout << BinaryData::getNamedResourceOriginalFilename((BinaryData::namedResourceList[5]);
+            imageUploadManager.currentImage = File("/Users/max/plugInDev/distortionPlugInV2/images/imageUpload.png");
             imageUploaded = false;
-            
-            //initialise the neural network object
-            
+                        
         }
         
         ~ImageUploadPanel()
@@ -74,6 +71,9 @@ namespace Gui
         {
             imageComp.setImage(newImage);
         }
+        
+        TextEditor& textOutput;
+
         
         
     private:
@@ -148,10 +148,7 @@ namespace Gui
         
         ImageUploadManager& imageUploadManager;
         
-        TextEditor& textOutput;
-        
-        //neural network object
-        
+            
         JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(ImageUploadPanel)
     };
 
